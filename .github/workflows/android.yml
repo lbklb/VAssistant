@@ -19,9 +19,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Modify local.properties
       run: |
-        echo "sdk.dir=...." >> local.properties
-        echo "scrcpy-lib.dir=./VAssist-Scrcpy/common" >> local.properties
-        echo "tts-lib.dir=./EdgeTTS/app" >> local.properties
+        echo "sdk.dir=...." >> VAssistant/local.properties
+        echo "scrcpy-lib.dir=./VAssist-Scrcpy/common" >> VAssistant/local.properties
+        echo "tts-lib.dir=./EdgeTTS/app" >> VAssistant/local.properties
       working-directory: ${{ github.workspace }}/
     - uses: gradle/gradle-build-action@v2
       with:
