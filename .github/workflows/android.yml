@@ -16,7 +16,7 @@ jobs:
       run: |
         git clone https://github.com/Vove7/VAssist-Scrcpy
         git clone https://github.com/Vove7/EdgeTTS
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: Modify local.properties
       run: |
         echo "sdk.dir=...." >> local.properties
@@ -24,7 +24,7 @@ jobs:
         echo "tts-lib.dir=./EdgeTTS/app" >> local.properties
       working-directory: ${{ github.workspace }}/
     - name: set up JDK 11
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v2
       with:
         java-version: '11'
         distribution: 'temurin'
