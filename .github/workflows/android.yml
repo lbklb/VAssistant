@@ -29,10 +29,10 @@ jobs:
       working-directory: ${{ github.workspace }}
     - name: Modify gradle.properties
       run: |
-        echo "sdk.dir=...." >> VAssistant/gradle.properties
-        echo "scrcpy-lib.dir=../VAssist-Scrcpy/common" >> VAssistant/gradle.properties
-        echo "tts-lib.dir=../EdgeTTS/app" >> VAssistant/gradle.properties
-      working-directory: ${{ github.workspace }}/VAssistant
+        echo "sdk.dir=...." >> gradle.properties
+        echo "scrcpy-lib.dir=../VAssist-Scrcpy/common" >> gradle.properties
+        echo "tts-lib.dir=../EdgeTTS/app" >> gradle.properties
+      working-directory: ${{ github.workspace }}/
     - name: Build with Gradle
       run: ./gradlew build
-      working-directory: ${{ github.workspace }}/VAssistant
+      working-directory: ${{ github.workspace }}/
