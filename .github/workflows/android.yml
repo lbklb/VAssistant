@@ -17,6 +17,12 @@ jobs:
         git clone https://github.com/Vove7/VAssist-Scrcpy
         git clone https://github.com/Vove7/EdgeTTS
     - uses: actions/checkout@v3
+    - name: Modify local.properties
+      run: |
+        echo "sdk.dir=...." >> local.properties
+        echo "scrcpy-lib.dir=./VAssist-Scrcpy/common" >> local.properties
+        echo "tts-lib.dir=./EdgeTTS/app" >> local.properties
+      working-directory: ${{ github.workspace }}/
     - name: set up JDK 11
       uses: actions/setup-java@v3
       with:
@@ -27,12 +33,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       working-directory: ${{ github.workspace }}
-    - name: Modify gradle.properties
-      run: |
-        echo "sdk.dir=...." >> gradle.properties
-        echo "scrcpy-lib.dir=../VAssist-Scrcpy/common" >> gradle.properties
-        echo "tts-lib.dir=../EdgeTTS/app" >> gradle.properties
-      working-directory: ${{ github.workspace }}/
+
     - name: Build with Gradle
       run: ./gradlew build
       working-directory: ${{ github.workspace }}/
