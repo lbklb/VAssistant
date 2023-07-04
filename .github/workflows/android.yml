@@ -24,15 +24,14 @@ jobs:
       run: chmod +x gradlew
     - name: Clone VAssistant, VAssist-Scrcpy, and EdgeTTS
       run: |
-        git clone https://github.com/Vove7/VAssistant
         git clone https://github.com/Vove7/VAssist-Scrcpy
         git clone https://github.com/Vove7/EdgeTTS
       working-directory: ${{ github.workspace }}
-    - name: Modify local.properties
+    - name: Modify gradle.properties
       run: |
-        echo "sdk.dir=...." >> VAssistant/local.properties
-        echo "scrcpy-lib.dir=../VAssist-Scrcpy/common" >> VAssistant/local.properties
-        echo "tts-lib.dir=../EdgeTTS/app" >> VAssistant/local.properties
+        echo "sdk.dir=...." >> VAssistant/gradle.properties
+        echo "scrcpy-lib.dir=../VAssist-Scrcpy/common" >> VAssistant/gradle.properties
+        echo "tts-lib.dir=../EdgeTTS/app" >> VAssistant/gradle.properties
       working-directory: ${{ github.workspace }}/VAssistant
     - name: Build with Gradle
       run: ./gradlew build
